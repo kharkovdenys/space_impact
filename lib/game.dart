@@ -13,7 +13,7 @@ import 'components/bonus.dart';
 import 'components/enemy_generator.dart';
 import 'size_config.dart';
 
-class SpaceImpact extends FlameGame with KeyboardEvents, HasCollidables {
+class SpaceImpact extends FlameGame with KeyboardEvents, HasCollisionDetection {
   late Player player;
   late SpriteSheet spriteSheet;
   late EnemyGenerator _enemyGenerator;
@@ -55,9 +55,9 @@ class SpaceImpact extends FlameGame with KeyboardEvents, HasCollidables {
         position: Vector2(canvasSize.x - 400, 10),
         textRenderer: TextPaint(
             style: const TextStyle(color: Colors.white)));
-    _playerSuperShots.isPrepared = true;
-    _playerHealth.isPrepared = true;
-    _playerScore.isPrepared = true;
+    _playerSuperShots.positionType = PositionType.viewport;
+    _playerHealth.positionType = PositionType.viewport;
+    _playerScore.positionType = PositionType.viewport;
     add(_playerScore);
     add(_playerHealth);
     add(_playerSuperShots);
