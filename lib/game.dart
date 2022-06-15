@@ -61,9 +61,6 @@ class SpaceImpact extends FlameGame with KeyboardEvents, HasCollisionDetection {
         textRenderer: TextPaint(
             style: TextStyle(color: Colors.white, fontSize: 12.toFont)))
       ..priority = 1;
-    _playerSuperShots.positionType = PositionType.viewport;
-    _playerHealth.positionType = PositionType.viewport;
-    _playerScore.positionType = PositionType.viewport;
     add(_playerScore);
     add(_playerHealth);
     add(_playerSuperShots);

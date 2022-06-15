@@ -26,22 +26,12 @@ class EnemyGenerator extends Component with HasGameRef<SpaceImpact> {
       gameSize - initialSize / 2,
     );
     int type = random.nextInt(2);
-    late Enemy enemy;
-    if (type == 0) {
-      enemy = Enemy(
-          sprite: spriteSheet.getSpriteById(3),
-          size: initialSize,
-          position: position,
-          type: 0)
-        ..priority = 0;
-    } else {
-      enemy = Enemy(
-          sprite: spriteSheet.getSpriteById(5),
-          size: initialSize,
-          position: position,
-          type: 1)
-        ..priority = 0;
-    }
+    Enemy enemy = Enemy(
+        sprite: spriteSheet.getSpriteById(type == 0 ? 3 : 5),
+        size: initialSize,
+        position: position,
+        type: type)
+      ..priority = 0;
     gameRef.add(enemy);
   }
 

@@ -56,19 +56,13 @@ class Enemy extends SpriteComponent
       _type == 0 ? gameRef.score += 10 : gameRef.score += 20;
       gameRef.updateScore();
       Random random = Random();
-      int randomNum = random.nextInt(100);
-      if (randomNum == 12) {
+      int randomNum = random.nextInt(20);
+      if (randomNum == 12 || randomNum == 16) {
         gameRef.add(Bonus(
-            sprite: gameRef.spriteSheet.getSpriteById(0),
+            sprite: gameRef.spriteSheet.getSpriteById(randomNum == 12 ? 0 : 1),
             size: Vector2(32, 32),
             position: position,
-            type: 1));
-      } else if (randomNum == 16) {
-        gameRef.add(Bonus(
-            sprite: gameRef.spriteSheet.getSpriteById(1),
-            size: Vector2(32, 32),
-            position: position,
-            type: 2));
+            type: randomNum == 12 ? 1 : 2));
       }
     }
     if (other is Player) {
