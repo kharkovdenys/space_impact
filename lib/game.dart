@@ -19,7 +19,7 @@ class SpaceImpact extends FlameGame with KeyboardEvents, HasCollisionDetection {
   late EnemyGenerator _enemyGenerator;
   late TextComponent _playerScore, _playerHealth, _playerSuperShots;
   late Timer _cooldowns;
-  bool _flagFire = false,_flagFireSuper=false;
+  bool _flagFire = false, _flagFireSuper = false;
   int score = 0, health = 3, superShots = 3;
 
   @override
@@ -43,34 +43,42 @@ class SpaceImpact extends FlameGame with KeyboardEvents, HasCollisionDetection {
     add(player);
     _enemyGenerator = EnemyGenerator(spriteSheet: spriteSheet);
     add(_enemyGenerator);
-    _playerScore = TextComponent(text: 'Score: 0',
+    _playerScore = TextComponent(
+        text: 'Score: 0',
         position: Vector2(canvasSize.x - 150, 10),
-        textRenderer:
-            TextPaint(style: const TextStyle(color: Colors.white)));
-    _playerHealth = TextComponent(text: '❤❤❤',
+        textRenderer: TextPaint(
+            style: TextStyle(color: Colors.white, fontSize: 12.toFont)))
+      ..priority = 1;
+    _playerHealth = TextComponent(
+        text: '❤❤❤',
         position: Vector2(10, 0),
         textRenderer: TextPaint(
-            style: const TextStyle(color: Colors.white, fontSize: 48)));
-    _playerSuperShots = TextComponent(text: 'Super Shots:$superShots/10',
+            style: TextStyle(color: Colors.white, fontSize: 24.toFont)))
+      ..priority = 1;
+    _playerSuperShots = TextComponent(
+        text: 'Super Shots: $superShots/10',
         position: Vector2(canvasSize.x - 400, 10),
         textRenderer: TextPaint(
-            style: const TextStyle(color: Colors.white)));
+            style: TextStyle(color: Colors.white, fontSize: 12.toFont)))
+      ..priority = 1;
     _playerSuperShots.positionType = PositionType.viewport;
     _playerHealth.positionType = PositionType.viewport;
     _playerScore.positionType = PositionType.viewport;
     add(_playerScore);
     add(_playerHealth);
     add(_playerSuperShots);
-    _cooldowns = Timer(0.4,onTick: () {_cooldowns.stop();});
+    _cooldowns = Timer(0.4, onTick: () {
+      _cooldowns.stop();
+    });
   }
 
   @override
   void update(double dt) {
     super.update(dt);
-    if(_cooldowns.isRunning()) {
+    if (_cooldowns.isRunning()) {
       _cooldowns.update(dt);
     }
-    if(_flagFireSuper&&superShots>0&&!_cooldowns.isRunning()){
+    if (_flagFireSuper && superShots > 0 && !_cooldowns.isRunning()) {
       Projectile projectile = Projectile(
         sprite: spriteSheet.getSpriteById(7),
         size: Vector2(64, 64),
@@ -81,23 +89,26 @@ class SpaceImpact extends FlameGame with KeyboardEvents, HasCollisionDetection {
       updateSuperShots();
       _cooldowns.start();
     }
-    if (_flagFire &&!_cooldowns.isRunning()) {
+    if (_flagFire && !_cooldowns.isRunning()) {
       Projectile projectile = Projectile(
-        sprite: spriteSheet.getSpriteById(4),
-        size: Vector2(64, 64),
-        position: player.position + Vector2(16, 0),type: 1
-      );
+          sprite: spriteSheet.getSpriteById(4),
+          size: Vector2(64, 64),
+          position: player.position + Vector2(16, 0),
+          type: 1);
       add(projectile);
       _cooldowns.start();
     }
   }
-  void updateScore(){
+
+  void updateScore() {
     _playerScore.text = 'Score: $score';
   }
-  void updateSuperShots(){
-    _playerSuperShots.text = 'Super Shots:$superShots/10';
+
+  void updateSuperShots() {
+    _playerSuperShots.text = 'Super Shots: $superShots/10';
   }
-  void updateHealth(){
+
+  void updateHealth() {
     _playerHealth.text = '';
     if (health <= 0) {
       paused = true;
@@ -135,9 +146,9 @@ class SpaceImpact extends FlameGame with KeyboardEvents, HasCollisionDetection {
 
   @override
   onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
-    if (keysPressed.contains(LogicalKeyboardKey.escape)&&!paused) {
-        overlays.add('menuPause');
-        pauseEngine();
+    if (keysPressed.contains(LogicalKeyboardKey.escape) && !paused) {
+      overlays.add('menuPause');
+      pauseEngine();
     }
     if (keysPressed.contains(LogicalKeyboardKey.space)) {
       _flagFire = true;
