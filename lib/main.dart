@@ -9,11 +9,12 @@ import 'package:window_manager/window_manager.dart';
 import 'game.dart';
 import 'size_config.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
   windowManager.waitUntilReadyToShow().then((_) async{
     await windowManager.setFullScreen(true);
+    await windowManager.show();
   });
   runApp(const SplashScreen());
 }
