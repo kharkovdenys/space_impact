@@ -12,7 +12,7 @@ import 'size_config.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
-  windowManager.waitUntilReadyToShow().then((_) async{
+  windowManager.waitUntilReadyToShow().then((_) async {
     await windowManager.setFullScreen(true);
     await windowManager.show();
   });
@@ -25,40 +25,45 @@ class Menu extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(child:Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Game title.
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 50.0.toHeight),
-              child: Text(
-                'Space Impact',
-                style: TextStyle(color: Colors.white, fontSize: 72.toFont),
+        backgroundColor: Colors.black,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Game title.
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 50.0.toHeight),
+                child: Text(
+                  'Space Impact',
+                  style: TextStyle(color: Colors.white, fontSize: 72.toFont),
+                ),
               ),
-            ),
-            SizedBox(
-              width: SizeConfig.screenWidth! / 8,
-              height: SizeConfig.screenWidth! / 8,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                      builder: (context) => GameWidget(
-                        game: SpaceImpact(),
-                        overlayBuilderMap: const {
-                          'buttonPause': buttonPause,'menuPause': menuPause,'endGame':endGame
-                        },initialActiveOverlays: const ['buttonPause'],
+              SizedBox(
+                width: SizeConfig.screenWidth! / 8,
+                height: SizeConfig.screenWidth! / 8,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => GameWidget(
+                          game: SpaceImpact(),
+                          overlayBuilderMap: const {
+                            'buttonPause': buttonPause,
+                            'menuPause': menuPause,
+                            'endGame': endGame
+                          },
+                          initialActiveOverlays: const ['buttonPause'],
+                        ),
                       ),
-                    ),
-                  );
-                },
-                child: Center(child: Image.asset('assets/images/play.jpg')),
-                style: ElevatedButton.styleFrom(primary: Colors.white),
+                    );
+                  },
+                  child: Center(child: Image.asset('assets/images/play.jpg')),
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: Colors.white),
+                ),
               ),
-            ),
-          ],
-        ),
-      ));
+            ],
+          ),
+        ));
   }
 }

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../game.dart';
 
-Widget menuPause(BuildContext buildContext,SpaceImpact game){
+Widget menuPause(BuildContext buildContext, SpaceImpact game) {
   return SimpleDialog(
     title: const Center(child: Text("Pause")),
     children: <Widget>[
@@ -27,8 +27,7 @@ Widget menuPause(BuildContext buildContext,SpaceImpact game){
         onPressed: () {
           exit(0);
         },
-        child:
-        const Center(child: Text('Exit')),
+        child: const Center(child: Text('Exit')),
       ),
     ],
   );

@@ -3,7 +3,7 @@ import 'package:space_impact/size_config.dart';
 
 import '../game.dart';
 
-Widget buttonPause(BuildContext buildContext,SpaceImpact game){
+Widget buttonPause(BuildContext buildContext, SpaceImpact game) {
   return Align(
     alignment: Alignment.topCenter,
     child: TextButton(
@@ -13,7 +13,7 @@ Widget buttonPause(BuildContext buildContext,SpaceImpact game){
         size: 48.toFont,
       ),
       onPressed: () {
-        if(!game.paused) {
+        if (!game.paused) {
           game.overlays.add('menuPause');
           game.pauseEngine();
         }

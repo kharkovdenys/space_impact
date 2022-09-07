@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../game.dart';
 
-Widget endGame(BuildContext buildContext,SpaceImpact game){
+Widget endGame(BuildContext buildContext, SpaceImpact game) {
   return SimpleDialog(
     title: Center(child: Text("Your score:${game.score}")),
     children: <Widget>[
@@ -20,8 +20,7 @@ Widget endGame(BuildContext buildContext,SpaceImpact game){
         onPressed: () {
           exit(0);
         },
-        child:
-        const Center(child: Text('Exit')),
+        child: const Center(child: Text('Exit')),
       ),
     ],
   );
