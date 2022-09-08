@@ -41,6 +41,7 @@ class Enemy extends SpriteComponent
           sprite: gameRef.spriteSheet.getSpriteById(6),
           position: position - Vector2(16, 0),
           size: Vector2(64, 64)));
+      gameRef.audioService.playSfx("sfx/laser3.mp3");
       _timer.start();
     }
   }

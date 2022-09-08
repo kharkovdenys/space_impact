@@ -42,6 +42,7 @@ class Bonus extends SpriteComponent
           gameRef.updateSuperShots();
         }
       }
+      gameRef.audioService.playSfx("sfx/highUp.mp3");
       removeFromParent();
     }
   }

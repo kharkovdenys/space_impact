@@ -5,14 +5,14 @@ import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flame/parallax.dart';
 import 'package:flame/sprite.dart';
-
-import '../../components/enemy.dart';
-import '../../components/enemy_projectile.dart';
-import '../../components/player.dart';
-import '../../components/projectile.dart';
-import '../../components/bonus.dart';
-import '../../components/enemy_generator.dart';
-import '../../services/size_config.dart';
+import 'package:space_impact/components/enemy.dart';
+import 'package:space_impact/components/enemy_projectile.dart';
+import 'package:space_impact/components/player.dart';
+import 'package:space_impact/components/projectile.dart';
+import 'package:space_impact/components/bonus.dart';
+import 'package:space_impact/components/enemy_generator.dart';
+import 'package:space_impact/services/audio.dart';
+import 'package:space_impact/services/size_config.dart';
 
 class SpaceImpact extends FlameGame with KeyboardEvents, HasCollisionDetection {
   late Player player;
@@ -20,6 +20,7 @@ class SpaceImpact extends FlameGame with KeyboardEvents, HasCollisionDetection {
   late EnemyGenerator _enemyGenerator;
   late TextComponent _playerScore, _playerHealth, _playerSuperShots;
   late Timer _cooldowns;
+  late AudioService audioService;
   bool _flagFire = false, _flagFireSuper = false;
   int score = 0, health = 3, superShots = 3;
 
@@ -34,6 +35,8 @@ class SpaceImpact extends FlameGame with KeyboardEvents, HasCollisionDetection {
       baseVelocity: Vector2(50, 0),
     );
     add(_background);
+    audioService = AudioService();
+    add(audioService);
     await images.load('spritesheet.png');
     spriteSheet = SpriteSheet.fromColumnsAndRows(
         image: images.fromCache('spritesheet.png'), columns: 4, rows: 2);
@@ -68,6 +71,7 @@ class SpaceImpact extends FlameGame with KeyboardEvents, HasCollisionDetection {
     _cooldowns = Timer(0.4, onTick: () {
       _cooldowns.stop();
     });
+    audioService.playBackground();
   }
 
   @override
@@ -82,6 +86,7 @@ class SpaceImpact extends FlameGame with KeyboardEvents, HasCollisionDetection {
         size: Vector2(64, 64),
         position: player.position + Vector2(16, 0),
       );
+      audioService.playSfx("sfx/laser1.mp3");
       add(projectile);
       superShots--;
       updateSuperShots();
@@ -93,6 +98,7 @@ class SpaceImpact extends FlameGame with KeyboardEvents, HasCollisionDetection {
           size: Vector2(64, 64),
           position: player.position + Vector2(16, 0),
           type: 1);
+      audioService.playSfx("sfx/laser4.mp3");
       add(projectile);
       _cooldowns.start();
     }
@@ -140,6 +146,7 @@ class SpaceImpact extends FlameGame with KeyboardEvents, HasCollisionDetection {
     updateHealth();
     updateScore();
     updateSuperShots();
+    audioService.playBackground();
   }
 
   @override
@@ -189,5 +196,17 @@ class SpaceImpact extends FlameGame with KeyboardEvents, HasCollisionDetection {
   void onGameResize(Vector2 canvasSize) {
     super.onGameResize(canvasSize);
     gameSize = canvasSize;
+  }
+
+  @override
+  void pauseEngine() {
+    super.pauseEngine();
+    audioService.pauseBackground();
+  }
+
+  @override
+  void resumeEngine() {
+    super.resumeEngine();
+    audioService.resumeBackground();
   }
 }
