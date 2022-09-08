@@ -1,7 +1,6 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-
-import '../size_config.dart';
+import 'package:space_impact/services/size_config.dart';
 
 class Player extends SpriteComponent with CollisionCallbacks {
   Vector2 _moveDirection = Vector2.zero();

@@ -1,10 +1,8 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:space_impact/components/enemy_projectile.dart';
-
-import 'enemy.dart';
-
-import '../size_config.dart';
+import 'package:space_impact/components/enemy.dart';
+import 'package:space_impact/services/size_config.dart';
 
 class Projectile extends SpriteComponent with CollisionCallbacks {
   final double _speed = 500;

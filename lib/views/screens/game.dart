@@ -5,13 +5,14 @@ import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flame/parallax.dart';
 import 'package:flame/sprite.dart';
-import 'components/enemy.dart';
-import 'components/enemy_projectile.dart';
-import 'components/player.dart';
-import 'components/projectile.dart';
-import 'components/bonus.dart';
-import 'components/enemy_generator.dart';
-import 'size_config.dart';
+
+import '../../components/enemy.dart';
+import '../../components/enemy_projectile.dart';
+import '../../components/player.dart';
+import '../../components/projectile.dart';
+import '../../components/bonus.dart';
+import '../../components/enemy_generator.dart';
+import '../../services/size_config.dart';
 
 class SpaceImpact extends FlameGame with KeyboardEvents, HasCollisionDetection {
   late Player player;

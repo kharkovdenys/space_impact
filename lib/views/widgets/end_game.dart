@@ -1,23 +1,14 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:space_impact/views/screens/game.dart';
 
-import '../game.dart';
-
-Widget menuPause(BuildContext buildContext, SpaceImpact game) {
+Widget endGame(BuildContext buildContext, SpaceImpact game) {
   return SimpleDialog(
-    title: const Center(child: Text("Pause")),
+    title: Center(child: Text("Your score:${game.score}")),
     children: <Widget>[
       SimpleDialogOption(
         onPressed: () {
-          game.overlays.remove('menuPause');
-          game.resumeEngine();
-        },
-        child: const Center(child: Text('Resume')),
-      ),
-      SimpleDialogOption(
-        onPressed: () {
-          game.overlays.remove('menuPause');
+          game.overlays.remove('endGame');
           game.restart();
           game.resumeEngine();
         },

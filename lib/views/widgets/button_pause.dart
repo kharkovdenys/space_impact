@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:space_impact/size_config.dart';
-
-import '../game.dart';
+import 'package:space_impact/services/size_config.dart';
+import 'package:space_impact/views/screens/game.dart';
 
 Widget buttonPause(BuildContext buildContext, SpaceImpact game) {
   return Align(

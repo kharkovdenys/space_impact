@@ -1,12 +1,9 @@
 import 'dart:math';
-
 import 'package:flame/components.dart';
 import 'package:flame/sprite.dart';
-
-import 'enemy.dart';
-
-import '../game.dart';
-import '../size_config.dart';
+import 'package:space_impact/components/enemy.dart';
+import 'package:space_impact/views/screens/game.dart';
+import 'package:space_impact/services/size_config.dart';
 
 class EnemyGenerator extends Component with HasGameRef<SpaceImpact> {
   Random random = Random();

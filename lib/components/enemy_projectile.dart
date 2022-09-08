@@ -1,10 +1,8 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-
-import 'projectile.dart';
-import 'player.dart';
-
-import '../game.dart';
+import 'package:space_impact/components/projectile.dart';
+import 'package:space_impact/components/player.dart';
+import 'package:space_impact/views/screens/game.dart';
 
 class EnemyProjectile extends SpriteComponent
     with CollisionCallbacks, HasGameRef<SpaceImpact> {
