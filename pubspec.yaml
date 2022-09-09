@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+6
+version: 1.0.1+0
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -26,6 +26,14 @@ environment:
 # dependencies can be manually updated by changing the version numbers below to
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
+msix_config:
+  display_name: Space Impact Windows
+  publisher_display_name: Denys Kharkov
+  identity_name: kharkovdenys.spaceimpact
+  logo_path: windows/runner/resources/app_icon.ico
+  msix_version: 1.0.1.0
+
+
 dependencies:
   flutter:
     sdk: flutter
@@ -48,6 +56,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
+  msix: ^2.8.18
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
