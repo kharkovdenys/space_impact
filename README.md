@@ -1,16 +1,45 @@
-# space_impact
+<div align="center">
+<h1>Space Impact</h1>
 
-A new Space Impact project.
+<p>
 
-## Getting Started
+<img src="https://img.shields.io/github/license/kharkovdenys/space_impact?color=blue" >
 
-This project is a starting point for a Flutter application.
+<img src="https://img.shields.io/badge/made%20by-kharkovdenys-blue.svg" >
 
-A few resources to get you started if this is your first Flutter project:
+<img src="https://img.shields.io/badge/platform-windows-blue.svg" >
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<img src="https://img.shields.io/github/languages/top/kharkovdenys/space_impact.svg">
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="https://img.shields.io/github/stars/kharkovdenys/space_impact.svg?style=flat">
+
+</p>
+</div>
+
+A simple 2D game based on the original
+
+---
+
+<div align="center">
+<img src="./assets/images/demo.gif" alt="Space Impact" />
+</div>
+
+## Dependencies
+
+* [Dart](https://dart.dev/)
+* [Flutter](https://flutter.dev/)
+* [Flame Engine](https://flame-engine.org/)
+
+## Controls
+
+<table>
+<thead>
+<tr><th>Keyboard shortcut</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd></td><td>Movement</td><tr>
+<tr><td><kbd>Space</kbd></td><td>Shoot</td></tr>
+<tr><td><kbd>Tab</kbd></td><td>SuperShoot</td></tr>
+<tr><td><kbd>Escape</kbd></td><td>Pause</td></tr>
+</tbody>
+</table>
